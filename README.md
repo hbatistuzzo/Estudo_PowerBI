@@ -1,7 +1,7 @@
 
 <div align="center">
-  <img src="powerbi.png" alt="powerbi" width="66%>
-  <img src="dsa.png" alt="Page 2 Overview" width="33%">
+  <img src="media/powerbi.png" alt="11" width="66%>
+  <img src="media/dsa.png" alt="22" width="33%">
 </div>
 
 <div align="center">
