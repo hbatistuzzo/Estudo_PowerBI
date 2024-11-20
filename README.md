@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="media/powerbi.png" alt="11" width="66%>
+  <img src="media/powerbi.png" alt="11" width="66%">
   <img src="media/dsa.png" alt="22" width="33%">
 </div>
 
