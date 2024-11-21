@@ -107,8 +107,8 @@ Neste projeto, será realizado um processo de _clusterização_, ou seja, **apre
 
 ---
 
+<h1 align="center">2. Segmentação de clientes com Machine Learning em linguagem Python</h1>
 
-## Segmentação de clientes com Machine Learning em linguagem Python
 
 A segmentação de clientes é o processo de dividir a base de clientes de uma empresa em grupos  distintos  com  base  em  características  comuns,  necessidades,  comportamentos  ou preferências.  O  objetivo  da  segmentação  é  entender  melhor  as  necessidades  e  desejos  de diferentes  grupos  de  clientes  e,  assim,adaptar  as  estratégias  de  marketing,  comunicação  e vendas para atender a essas necessidades de maneira mais eficaz e personalizada.
 
@@ -215,17 +215,21 @@ Esta análise pode ser devolvida agora ao departamento de marketing, o qual pode
 
 ---
 
-
-## Detecção de anomalias com Machine Learning em linguagem R
+<h1 align="center">3. Detecção de anomalias com Machine Learning em linguagem R</h1>
 
 A detecção de anomalias, também conhecida como detecção de outliers, é uma técnica em  Machine  Learning  e Estatística  que  visa  identificar  padrões  incomuns,  inesperados  ou anômalos nos dados. Esses padrões podem ser diferentes das observações normais de várias maneiras,  como  magnitude,  frequência  ou  comportamento.  A  detecção  de  anomalias  é importante porque as anomalias podem indicar problemas, erros, falhas, fraudes ou atividades maliciosas e, em muitos casos, é crucial identificar e analisar esses eventos anômalos para tomar decisões informadas e apropriadas.
 
 Existem várias abordagens para detectar anomalias em Machine Learning, algumas das quais incluem:
 1. **Métodos Estatísticos**: baseiam-se na análise estatística dos dados, como testes de hipóteses, distribuições de probabilidade e medidas de dispersão (por exemplo, desvio padrão e intervalos interquartis). Observações que estão significativamente distantes da média ou fora dos intervalos esperados são consideradas anômalas.
+
 2. **Aprendizado Supervisionado**:  nesta  abordagem,  um  modelo  de  Machine  Learning  é treinado usando um conjunto de dados rotulado, que inclui exemplos de observações normais e anômalas. O modelo aprende a distinguir entre as duas classes e, em seguida, pode ser usado para  classificar  novas  observações  como  normais  ou  anômalas.
+
 3. **Aprendizado Não Supervisionado**: neste caso, os algoritmos de Machine Learning são usados para analisar dados não rotulados e identificar padrões ou agrupamentos naturais neles. As anomalias são identificadas como pontos de dados que não se encaixam bem em nenhum desses agrupamentos ou que estão significativamente distantes de outros pontos de dados. Alguns exemplos de algoritmos de aprendizado não supervisionado usados para detecção de anomalias incluem clustering (por exemplo, K-means) e técnicas de redução de dimensionalidade (por exemplo, PCA).
+
 4. **Aprendizado Semi-Supervisionado**: esta abordagem combina elementos de aprendizado supervisionado e não supervisionado. Os algoritmos são treinados em um conjunto de dados parcialmente rotulado, que contém exemplos de observações normais e um pequeno número de  exemplos anômalos. O  modelo aprende a distinguir entre as classes e identificar novas anomalias com base nos padrões aprendidos.
+
 5. **Métodos Baseados em Densidade**: esses métodos identificam anomalias como pontos de dados que estão localizados em áreas de baixa densidade do espaço de recursos (atributos). Um exemplo popular de algoritmo de detecção de anomalias baseado em densidade é o DBSCAN (_Density-Based Spatial Clustering of Applications with Noise_)
+
 6. **Métodos Baseados em Vizinhança**: esses métodos comparam a distância ou similaridade entre pontos de dados e seus vizinhos para identificar anomalias. Os pontos de dados que têm vizinhos significativamente diferentes de si mesmos são considerados anômalos. Exemplos de algoritmos que empregam essa abordagem incluem o k-NN (k-Nearest Neighbors) e o LOF (Local Outlier Factor). 
 
 A escolha do método mais adequado para detecção de anomalias depende do contexto, da natureza dos dados, do conhecimento técnico do profissional de análise e do tipo de problema que desejamos resolver.
@@ -235,6 +239,74 @@ A escolha do método mais adequado para detecção de anomalias depende do conte
 O problema proposto é descrito a seguir:
 - Imagine que uma empresa da área financeira tenha dados históricos de clientes com duas transações financeiras (aqui chamadas de “transacao1” e “transacao2”). Os gestores acreditam que algumas dessas transações possam ser fraudulentas e gostariam de identificar as eventuais anomalias. Os gestores não fazem ideia do que seria uma anomalia e pediram sua ajuda para encontrar uma solução. De fato, eles não sabem se anomalias realmente ocorreram. Usando dados fictícios usaremos Machine Learning para agrupar os dados de transações financeiras dos clientes e então detectar e definir as anomalias (se existirem). O resultado deve ser entregue no formato visual através de gráficos no Power BI.
 
+A linguagem R será util em duas frentes nesse caso: para executar o algoritmo de detecção de anomalia e para gerar uma visualização em box-plot, a qual não existe de forma nativa no Power BI (o que, convenhamos, é ligeiramente surpreendente). Para este projeto, utilizamos R e Rtools na IDE RStudio:
+
+<div align="center">
+  <img src="media/rstudio.png" alt="r">
+</div>
+
+<br>
+
+- Os pacotes _tidyverse, dplyr_ e _readr_ são utilizados na manipulação dos dados;
+- _solitude_ traz o algoritmo de machine learning para a detecção de anomalias; e
+- _ggplot2_ é, verdade seja dita, seguramente um dos melhores pacotes para visualização de dados atualmente. O revés está na curva de aprendizado relativamente íngrime.
+
+Ao visualizar o conjunto de dados, fica claro que é necessária novamente a escolha por um algoritmo não-supervisionado: não há dados históricos ou "verdade de campo" para balizar o treinamento. O aprendizado será realizado _da capo_, <br>
+_in loco_, <br>
+_allegro, ma non troppo_..
+
+O algoritmo vai buscar padrões no conjunto de dados e posteriormente buscar aquilo que foge destes padrões. Não há dados de saída (eu ainda não sei o que é anomalia), apenas os dados de entrada. Dentro do pacote _solitude_, podemos utilizar o algoritmo Isolation Forest.
+
+O treinamento e aplicação do algoritmo ao nosso conjunto prévio de dados gera um parâmetro "anomaly score". Quanto maior o anomaly score, maior a chance do registro ser uma anomalia.
+
+<div align="center">
+  <img src="media/anomaly_plot.png" alt="r">
+</div>
+
+<br>
+
+Observa-se que a vasta maioria dos registros possui um score < 0.60; podemos supor que estes registros de transações não configuram fraudes. Vamos definir como regra que um anomaly score acima de 0.62 é uma anomalia. Podemos agora aplicar um filtro sobre os dados iniciais e utilizar o _ggplot_ para construir um gráfico de dispersão entre as transações do tipo 1 e 2, discriminando aqueles que passam pelo filtro (em azul) e aqueles que não passam (em vermelho):
+
+<div align="center">
+  <img src="media/ggplot.png" alt="r">
+</div>
+
+<br>
+
+A tabela anomalias_histórico (verifique no arquivo Lab8.R) guarda as transações que não passaram pelo filtro aplicado pelo algoritmo. <br>
+O modelo criado pode agora ser utilizado para a verificação de fraude em novos conjuntos de dados. Nota-se que o modelo funciona, mas há definitivamente espaço para refinamento: as transações nas bordas do plot definitivamente fogem ao padrão, mas o modelo não capture todos (e.g. note as transações em azul no canto superior direito); ao mesmo tempo, o modelo identifica como fraudulentas muitas transações na região central-inferior e central-esquerda, próximas ao aglomerado, o que não necessariamente é apropriado. O ajuste do algoritmo de forma iterativa permitirá uma classificação cada vez mais criteriosa.
+
+<div align="center">
+  <img src="media/ggplot2.png" alt="r">
+</div>
+
+<br>
+
+Podemos visualizar a tabela de previsão dos novos dados em formato boxplot. Isto é particularmente interessante para explicitar a presença de outliers. Note, destacado em verde, que as transações ali representadas claramente configuram pares que destoam completamente dos padrões exibidos naquele conjunto de dados. Esta informação poderia ser utilizada para alterar o valor de score que escolhemos como filtro. Talvez 0.62 tenha sido um filtro muito agressivo, e algo superior a 0.63/0.64 seja uma escolha mais criteriosa. Um novo modelo pode ser treinado e o processo refeito para verificação.
+
+<div align="center">
+  <img src="media/boxplot.png" alt="r">
+</div>
+
+<br>
+
+Neste momento, podemos optar por importar esta visualização para o Power BI, uma vez que lá não conseguimos (ainda) construir boxplots. A visualização "R Script Visual" requer os atributos que estão sendo utilizados _e_ o código-fonte escrito em linguagem R para que a visualização seja processada. Cumpridas estas etapas, podemos seguir a customização do relatório pbix como de praxe.
+
+<div align="center">
+  <img src="media/transfer_powerbi.gif" alt="r1">
+</div>
+
+<br>
+
+Podemos agora fazer uma última customização do nosso dashboard e construir um relatório final. A grande vantagem da integração entre o visual criado com o pacote ggplot no RStudio e a posterior exportação é que podemos agora usufruir da interatividade usual para visualizações nativas do PowerBI. Observe abaixo:
+
+<div align="center">
+  <img src="media/transfer_powerbi2.gif" alt="r2">
+</div>
+
+<br>
+
+O que antes era um gráfico estático no RStudio agora interage dinâmicamente com as outras visualizações do PowerBI. Esta funcionalidade é extremamente poderosa, ainda mais quando utilizada em conjunto com uma biblioteca do calibre do ggplot.
 
 
 ![Abhinandan Trilokia](https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg)
