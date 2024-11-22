@@ -308,5 +308,52 @@ Podemos agora fazer uma última customização do nosso dashboard e construir um
 
 O que antes era um gráfico estático no RStudio agora interage dinâmicamente com as outras visualizações do PowerBI. Esta funcionalidade é extremamente poderosa, ainda mais quando utilizada em conjunto com uma biblioteca do calibre do ggplot.
 
+---
+
+<h1 align="center">4. Inteligência Artificial e Séries Temporais com Power BI</h1>
+
+Existem   várias   técnicas   de   análise   de  séries   temporais,   que   vão   desde modelos estatísticos clássicos a abordagens mais modernas de Aprendizado  de Máquina e Inteligência Artificial. Aqui estão algumas das técnicas mais comuns:
+
+1. **Análise  de Tendências**:  Esta  é uma  das  técnicas  mais  simples,  onde  se  procura  uma tendência persistente ao longo do tempo, como por exemplo um aumento constante ou uma queda nos dados;
+
+2. **Médias Móveis e Suavização Exponencial**: Estas são técnicas para remover o "ruído" de uma  série  temporal,  fazendo  a  média  de  pontos  de  dados  em  um  determinado  número  de períodos de tempo;
+
+3. **Decomposição**: Esta técnica envolve a separação da série temporal em componentes de tendência, sazonalidade e resíduos (o que resta depois de remover a tendência e a sazonalidade);
+
+4. **Modelos Autorregressivos (AR)**: Em  um  modelo  AR,  o  valor  de  uma  variável em um determinado momento é suposto ser uma função linear dos valores anteriores;
+
+5. **Modelos de Médias Móveis (MA)**: Já em um modelo  MA, o valor de uma variável em um determinado  momento  é  suposto  ser  uma  função  linear  dos  erros  de  previsão  dos  pontos anteriores;
+
+6. **Modelos ARIMA (Autoregressive Integrated Moving Average)**: Estes combinam modelos AR e MA e também incluem um termo de "diferenciação" para tornar a série  temporal estacionária;
+
+7. **Modelos de Aprendizado de Máquina (Machine Learning)**: Modelos de aprendizado de máquina  como  redes  neurais,  SVMs,  florestas  aleatórias,  gradient  boosting, etc., podem ser usados para modelar séries temporais. Especificamente, redes neurais como LSTMs e GRUs são particularmente  adequadas  para  séries  temporais por causa de sua capacidade de "lembrar" valores passados;
+
+8. **Modelos de Aprendizado Profundo (Deep Learning)**: Redes Neurais Recorrentes (RNNs) e  suas  variantes  como  Long  Short  Term  Memory  (LSTM)  e  Gated  Recurrent Units (GRUs) são amplamente  usadas  para  modelagem  de séries   temporais. Mais  recentemente, modelos baseados em Transformers estão sendo aplicados à análise de séries temporais. A escolha da técnica apropriada depende do problema específico da série temporal, da natureza dos dados, da disponibilidade de recursos computacionais e de outros fatores.
+
+O Power BI não é uma ferramenta para análise de séries temporais, mas oferece alguns recursos simples que podem ser utilizados para uma análise geral. Serão aplicas duas análises: uma preditiva e uma de detecção de anomalias, no contexto de engenharia de produção. Este setor fornece ao analista uma tabela contendo os atributos "período" (data), "turno", o "range de idade dos funcionários" e o "total de unidades produzidas" em uma determinada indústria.
+
+É importante delimitar alguns conceitos, antes de mais nada:
+
+- **Estacionaridade**:  Uma  série  temporal  é  dita  estacionária  se  suas  propriedades estatísticas, como média, variância e autocorrelação, são constantes ao longo do tempo. Isso significa  que,  independentemente  do  ponto  específico  do  tempo  que  você  selecionar,  as características estatísticas da série temporal serão as mesmas. Esta é uma suposição importante em muitos modelos de séries temporais, porque simplifica as previsões. No entanto, muitas séries temporais do mundo real não são estacionárias, mas podem ser transformadas em séries estacionárias através de métodos como a diferenciação.
+
+- **Tendência**: A tendência refere-se a um padrão de longo prazo na série temporal que mostra uma direção geral. Por exemplo, se as vendas de um produto estão consistentemente aumentando ao longo do tempo, diz-se que há uma tendência de alta. Por outro lado, se a temperatura de uma cidade está consistentemente diminuindo ao longo do tempo, há uma tendência de baixa. A tendência pode ser linear (ou seja, a série aumenta ou diminui a uma taxa constante) ou não-linear.
+
+- **Sazonalidade**: A sazonalidade refere-se a padrões que se repetem em intervalos fixos de tempo. Por exemplo, as vendas de sorvete podem ser mais altas no verão e mais baixas no inverno  todos  os  anos,  o  que  é  um  exemplo  de  sazonalidade  anual.  Da  mesma  forma, a quantidade de tráfego da web pode ser mais alta durante a semana e mais baixa nos fins de semana, o  que  é  um  exemplo  de  sazonalidade  semanal.  Ajustar  a  sazonalidade  pode  ser importante para fazer previsões precisas, especialmente para negócios ou fenômenos que são fortemente influenciados por fatores sazonais.
+
+A  identificação  e  o  ajuste  da  estacionaridade,  tendência  e  sazonalidade  podem  ser essenciais  para  a  modelagem  efetiva  de  séries  temporais  e  para  a  realização  de  previsões precisas.
+
+A detecção de outliers é a primeira ferramenta de inteligência artificial implementada no Power BI (veja abaixo). Essa seção deve ser expandida nas próximas versões do programa. Podemos customizar o intervalo "normal" modificando o nível de Confidencialidade (%): quanto maior, mais agressiva a detecção de observações que estão "fora da média".
+
+<div align="center">
+  <img src="media/anomaly.gif" alt="a22">
+</div>
+
+Além disso, analisando a média do total de unidades produzidas ao longo do tempo, podemos nos perguntar se é possível prever como essa produção se conduzirá no futuro. Esta é a análise de forecasting, visualizada no gráfico inferior do dashboard abaixo, já formatado para o resultado final. Esta análise preditiva também pode ser customizada: modificando-se o comprimento da previsão (quanto maior, mais imprecisa é a ferramenta, é claro), ou adicionando efeitos de sazonalidade. Observe que se filtrarmos apenas a faixa etária de "65 anos e acima", o modelo prevê uma queda acentuada na produção de unidades, uma vez que esse grupo possui a pior performance dentre todas as faixas de idade.
+
+<div align="center">
+  <img src="media/forecasting.gif" alt="r2">
+</div>
+
+Outras funcionalidades são úteis aqui, principalmente para gráficos de linha, como as opções de "drill up" e "drill down", as quais permitem agrupar os valores em diferentes níveis da hierarquia de data e.g. médias anuais, trimestrais, mensais e assim por diante.
 
 ![Abhinandan Trilokia](https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg)

@@ -20,19 +20,19 @@ library(ggplot2)
 library(readr)
 
 # Carrega os dados históricos
-dados_historicos_dsa <- read_csv("dados_historicos.csv")
+dados_historicos_dsa <- read_csv("Lab8/dados_historicos.csv")
 View(dados_historicos_dsa)
 
 # Cria o modelo de Machine Learning com algoritmo isolationForest
 ?isolationForest 
-modelo_ml_dsa = isolationForest$new() 
+modelo_ml = isolationForest$new() 
 
 # Treina o modelo
-modelo_ml_dsa$fit(dados_historicos_dsa)
+modelo_ml$fit(dados_historicos_dsa)
 
 # Faz as previsões com o modelo usando os dados históricos
 previsoes_historico = dados_historicos_dsa %>%
-  modelo_ml_dsa$predict() %>%
+  modelo_ml$predict() %>%
   arrange(desc(anomaly_score))
 
 View(previsoes_historico)
@@ -61,11 +61,11 @@ ggplot() +
              alpha = 0.8)
 
 # Agora carregamos novos dados
-novos_dados_dsa <- read.csv("novos_dados.csv")
+novos_dados_dsa <- read.csv("Lab8/novos_dados.csv")
 View(novos_dados_dsa)
 
 # Previsões com o modelo treinado
-previsoes_novos_dados = modelo_ml_dsa$predict(novos_dados_dsa)
+previsoes_novos_dados = modelo_ml$predict(novos_dados_dsa)
 
 # Se o anomaly score é maior que 0.62 consideramos como anomalia
 indices_novos_dados = previsoes_novos_dados[which(previsoes_novos_dados$anomaly_score > 0.62)]
