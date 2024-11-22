@@ -4,7 +4,7 @@
   <img src="media/dsa.png" alt="22" width="20%">
 </div>
 
-Este repositório estrutura o conteúdo da segunda metade do curso "Business Intelligence e Data Science" da Data Science Academy (~ 70 horas de duração, nível intermediário).  inclui um portfolio de projetos construídos com base na primeira metade do mesmo curso.
+Este repositório estrutura o conteúdo da segunda metade do curso "Business Intelligence e Data Science" da Data Science Academy (~ 72horas de duração, nível intermediário) e inclui um portfolio de projetos construídos com base na segunda metade do mesmo curso.
 
 ### Qual o porquê da separação?
 A primeira metade do curso é voltada para a funcionalidade do Power BI: visualizações, linguagem DAX e M, funcionalidades nativas, etc.
