@@ -109,6 +109,9 @@ Neste projeto, será realizado um processo de _clusterização_, ou seja, **apre
 
 <h1 align="center">2. Segmentação de clientes com Machine Learning em linguagem Python</h1>
 
+🔹Interaja com o [Dashboard online aqui](https://app.powerbi.com/groups/me/reports/cc233d4d-d9fe-475d-b275-ae1ea09235a1/ReportSection?experience=power-bi)
+
+## Contexto
 
 A segmentação de clientes é o processo de dividir a base de clientes de uma empresa em grupos  distintos  com  base  em  características  comuns,  necessidades,  comportamentos  ou preferências.  O  objetivo  da  segmentação  é  entender  melhor  as  necessidades  e  desejos  de diferentes  grupos  de  clientes  e,  assim,adaptar  as  estratégias  de  marketing,  comunicação  e vendas para atender a essas necessidades de maneira mais eficaz e personalizada.
 
@@ -217,9 +220,15 @@ Esta análise pode ser devolvida agora ao departamento de marketing, o qual pode
 
 <h1 align="center">3. Detecção de anomalias com Machine Learning em linguagem R</h1>
 
+🔹Interaja com o [Dashboard online aqui](https://app.powerbi.com/groups/me/reports/6d58dbbd-c9f6-43cb-b689-8446c3655571/ReportSection?experience=power-bi)
+
 A detecção de anomalias, também conhecida como detecção de outliers, é uma técnica em  Machine  Learning  e Estatística  que  visa  identificar  padrões  incomuns,  inesperados  ou anômalos nos dados. Esses padrões podem ser diferentes das observações normais de várias maneiras,  como  magnitude,  frequência  ou  comportamento.  A  detecção  de  anomalias  é importante porque as anomalias podem indicar problemas, erros, falhas, fraudes ou atividades maliciosas e, em muitos casos, é crucial identificar e analisar esses eventos anômalos para tomar decisões informadas e apropriadas.
 
+<details>
+<summary>Contexto</summary>
+
 Existem várias abordagens para detectar anomalias em Machine Learning, algumas das quais incluem:
+
 1. **Métodos Estatísticos**: baseiam-se na análise estatística dos dados, como testes de hipóteses, distribuições de probabilidade e medidas de dispersão (por exemplo, desvio padrão e intervalos interquartis). Observações que estão significativamente distantes da média ou fora dos intervalos esperados são consideradas anômalas.
 
 2. **Aprendizado Supervisionado**:  nesta  abordagem,  um  modelo  de  Machine  Learning  é treinado usando um conjunto de dados rotulado, que inclui exemplos de observações normais e anômalas. O modelo aprende a distinguir entre as duas classes e, em seguida, pode ser usado para  classificar  novas  observações  como  normais  ou  anômalas.
@@ -233,6 +242,8 @@ Existem várias abordagens para detectar anomalias em Machine Learning, algumas 
 6. **Métodos Baseados em Vizinhança**: esses métodos comparam a distância ou similaridade entre pontos de dados e seus vizinhos para identificar anomalias. Os pontos de dados que têm vizinhos significativamente diferentes de si mesmos são considerados anômalos. Exemplos de algoritmos que empregam essa abordagem incluem o k-NN (k-Nearest Neighbors) e o LOF (Local Outlier Factor). 
 
 A escolha do método mais adequado para detecção de anomalias depende do contexto, da natureza dos dados, do conhecimento técnico do profissional de análise e do tipo de problema que desejamos resolver.
+
+</details>
 
 ---
 
@@ -312,6 +323,11 @@ O que antes era um gráfico estático no RStudio agora interage dinâmicamente c
 
 <h1 align="center">4. Inteligência Artificial e Séries Temporais com Power BI</h1>
 
+🔹Interaja com o [Dashboard online aqui](https://app.powerbi.com/groups/me/reports/dd70e51d-80bb-47c6-b45b-ebb6bc73c39f/ReportSection?experience=power-bi)
+
+<details>
+<summary>Contexto</summary>
+
 Existem   várias   técnicas   de   análise   de  séries   temporais,   que   vão   desde modelos estatísticos clássicos a abordagens mais modernas de Aprendizado  de Máquina e Inteligência Artificial. Aqui estão algumas das técnicas mais comuns:
 
 1. **Análise  de Tendências**:  Esta  é uma  das  técnicas  mais  simples,  onde  se  procura  uma tendência persistente ao longo do tempo, como por exemplo um aumento constante ou uma queda nos dados;
@@ -341,6 +357,10 @@ O Power BI não é uma ferramenta para análise de séries temporais, mas oferec
 - **Sazonalidade**: A sazonalidade refere-se a padrões que se repetem em intervalos fixos de tempo. Por exemplo, as vendas de sorvete podem ser mais altas no verão e mais baixas no inverno  todos  os  anos,  o  que  é  um  exemplo  de  sazonalidade  anual.  Da  mesma  forma, a quantidade de tráfego da web pode ser mais alta durante a semana e mais baixa nos fins de semana, o  que  é  um  exemplo  de  sazonalidade  semanal.  Ajustar  a  sazonalidade  pode  ser importante para fazer previsões precisas, especialmente para negócios ou fenômenos que são fortemente influenciados por fatores sazonais.
 
 A  identificação  e  o  ajuste  da  estacionaridade,  tendência  e  sazonalidade  podem  ser essenciais  para  a  modelagem  efetiva  de  séries  temporais  e  para  a  realização  de  previsões precisas.
+
+</details>
+
+## Construção do Dashboard
 
 A detecção de outliers é a primeira ferramenta de inteligência artificial implementada no Power BI (veja abaixo). Essa seção deve ser expandida nas próximas versões do programa. Podemos customizar o intervalo "normal" modificando o nível de Confidencialidade (%): quanto maior, mais agressiva a detecção de observações que estão "fora da média".
 
